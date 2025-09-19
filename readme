@@ -1,0 +1,10 @@
+pnpm init
+pnpm add express dotenv cors morgan
+pnpm add @prisma/client
+pnpm add -D prisma nodemon
+npx prisma init
+pnpm prisma:generate
+pnpm prisma:migrate
+pnpm add xlsx
+pnpm run seed
+pnpm add jsonwebtoken

@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Measurement {
+  measurement_id   Int     @id
+  measurement_name String
+  measurement_desc String?
+}
+
+model CompanyProfile {
+  registration_code String  @id
+  company_name      String
+  industrial_type   String?
+  measurement_1     Boolean
+  measurement_2     Boolean
+  measurement_3     Boolean
+  measurement_4     Boolean
+  measurement_5     Boolean
+  measurement_6     Boolean
+  measurement_7     Boolean
+  measurement_8     Boolean
+  measurement_9     Boolean
+}
