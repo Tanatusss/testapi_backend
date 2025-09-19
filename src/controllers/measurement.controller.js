@@ -1,5 +1,6 @@
 import { listCatalog, getCompaniesResults, findCompaniesWithSameMeasurementsFlat } from '../services/measurement.service.js';
 import  prisma  from '../libs/prisma.js';
+import { error } from 'console';
 
 // POST /v1/getMeasurement
 export async function getMeasurement(req, res, next) {
@@ -14,10 +15,11 @@ export async function getMeasurement(req, res, next) {
 //  POST /v1/getListMeasurement
 export async function getListMeasurement(req, res, next) {
   try {
-    const codes = Array.isArray(req.body?.registration_codes)
-      ? req.body.registration_codes
-      : [];
+    const codes = Array.isArray(req.body?.registration_codes) ? req.body.registration_codes : [];
 
+    if(codes.length === 0) {
+      return res.status(400).json({ error: 'registration_codes is required' });
+    }
     const results = await getCompaniesResults(codes);
     return res.json({ results });
   } catch (err) {

@@ -80,7 +80,7 @@ export async function findCompaniesWithSameMeasurementsFlat(code) {
   });
 
   if (!target) {
-    return []; // หรือจะโยน error/404 ก็ได้ ตามดีไซน์ของคุณ
+    return []; 
   }
 
   // สร้าง where เงื่อนไขเท่ากันทุก measurement + ตัดบริษัทตัวเองออก

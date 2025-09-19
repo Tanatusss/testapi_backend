@@ -3,15 +3,15 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import { router as measurementRouter } from './routes/measurement.js';
-import { authToken } from './middlewares/auth.js';
+
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json());
 app.use(morgan('dev'));
 
 
-app.use('/v1', authToken, measurementRouter);
+app.use('/v1', measurementRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
